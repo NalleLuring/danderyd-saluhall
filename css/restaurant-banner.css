@@ -51,23 +51,23 @@
 }
 
 .restaurant-banner_logo-cucina {
-  height: calc(14px * var(--logo-scale));
+  height: calc(20px * var(--logo-scale));
 }
 
 .restaurant-banner_logo-saluhall {
-  height: calc(29px * var(--logo-scale));
+  height: calc(44px * var(--logo-scale));
 }
 
 .restaurant-banner_logo-taameya {
-  height: calc(18px * var(--logo-scale));
+  height: calc(28px * var(--logo-scale));
 }
 
 .restaurant-banner_logo-nonparlo {
-  height: calc(9px * var(--logo-scale));
+  height: calc(13px * var(--logo-scale));
 }
 
 .restaurant-banner_logo-bagels {
-  height: calc(23px * var(--logo-scale));
+  height: calc(34px * var(--logo-scale));
 }
 
 @media screen and (max-width: 991px) {
