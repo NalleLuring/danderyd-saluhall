@@ -2,13 +2,14 @@
 
 .section_footers {
   flex-direction: column;
+  padding-bottom: 0;
 }
 
 .restaurant-banner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 2rem;
+  row-gap: 1.5rem;
   width: 100%;
   padding: 2rem 1.875rem;
   background-color: var(--base-color-brand--beige);
@@ -16,6 +17,7 @@
 }
 
 .restaurant-banner_heading {
+  order: 2;
   margin: 0;
   font-size: 1rem;
   line-height: 1.4;
@@ -24,12 +26,13 @@
 
 .restaurant-banner_logos {
   --logo-scale: 1;
+  order: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  column-gap: 3.75rem;
-  row-gap: 2rem;
+  column-gap: 2.5rem;
+  row-gap: 1.25rem;
 }
 
 .restaurant-banner_link {
@@ -48,49 +51,49 @@
 }
 
 .restaurant-banner_logo-cucina {
-  height: calc(27px * var(--logo-scale));
+  height: calc(14px * var(--logo-scale));
 }
 
 .restaurant-banner_logo-saluhall {
-  height: calc(58px * var(--logo-scale));
+  height: calc(29px * var(--logo-scale));
 }
 
 .restaurant-banner_logo-taameya {
-  height: calc(37px * var(--logo-scale));
+  height: calc(18px * var(--logo-scale));
 }
 
 .restaurant-banner_logo-nonparlo {
-  height: calc(17px * var(--logo-scale));
+  height: calc(9px * var(--logo-scale));
 }
 
 .restaurant-banner_logo-bagels {
-  height: calc(45px * var(--logo-scale));
+  height: calc(23px * var(--logo-scale));
 }
 
 @media screen and (max-width: 991px) {
   .restaurant-banner_logos {
     --logo-scale: 0.9;
-    column-gap: 2.5rem;
+    column-gap: 2rem;
   }
 }
 
 @media screen and (max-width: 767px) {
   .restaurant-banner_logos {
     --logo-scale: 0.85;
-    column-gap: 2.25rem;
-    row-gap: 1.75rem;
+    column-gap: 1.75rem;
+    row-gap: 1rem;
   }
 }
 
 @media screen and (max-width: 479px) {
   .restaurant-banner {
-    row-gap: 1.5rem;
+    row-gap: 1.25rem;
     padding: 1.75rem 1.25rem;
   }
 
   .restaurant-banner_logos {
     --logo-scale: 0.8;
-    column-gap: 1.75rem;
-    row-gap: 1.5rem;
+    column-gap: 1.5rem;
+    row-gap: 1rem;
   }
 }
