@@ -1,0 +1,96 @@
+/* Banner: Besök gärna våra andra restauranger (längst ner i footern) */
+
+.section_footers {
+  flex-direction: column;
+}
+
+.restaurant-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem;
+  width: 100%;
+  padding: 2rem 1.875rem;
+  background-color: var(--base-color-brand--beige);
+  color: var(--base-color-neutral--black);
+}
+
+.restaurant-banner_heading {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.restaurant-banner_logos {
+  --logo-scale: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 3.75rem;
+  row-gap: 2rem;
+}
+
+.restaurant-banner_link {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.restaurant-banner_link:hover {
+  opacity: 0.6;
+}
+
+.restaurant-banner_link img {
+  display: block;
+  width: auto;
+}
+
+.restaurant-banner_logo-cucina {
+  height: calc(27px * var(--logo-scale));
+}
+
+.restaurant-banner_logo-saluhall {
+  height: calc(58px * var(--logo-scale));
+}
+
+.restaurant-banner_logo-taameya {
+  height: calc(37px * var(--logo-scale));
+}
+
+.restaurant-banner_logo-nonparlo {
+  height: calc(17px * var(--logo-scale));
+}
+
+.restaurant-banner_logo-bagels {
+  height: calc(45px * var(--logo-scale));
+}
+
+@media screen and (max-width: 991px) {
+  .restaurant-banner_logos {
+    --logo-scale: 0.9;
+    column-gap: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .restaurant-banner_logos {
+    --logo-scale: 0.85;
+    column-gap: 2.25rem;
+    row-gap: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .restaurant-banner {
+    row-gap: 1.5rem;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .restaurant-banner_logos {
+    --logo-scale: 0.8;
+    column-gap: 1.75rem;
+    row-gap: 1.5rem;
+  }
+}
