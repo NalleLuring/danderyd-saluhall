@@ -17,20 +17,20 @@
 }
 
 .restaurant-banner_heading {
-  order: 2;
   margin: 0;
   font-size: 1rem;
   line-height: 1.4;
   text-align: center;
 }
 
+/* Grid i stället för flex-wrap: bryter alltid 4 -> 2x2, aldrig 3+1 */
 .restaurant-banner_logos {
   --logo-scale: 1;
-  order: 1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
   justify-content: center;
+  justify-items: center;
+  align-items: center;
   column-gap: 2.5rem;
   row-gap: 1.25rem;
 }
@@ -93,7 +93,8 @@
 
   .restaurant-banner_logos {
     --logo-scale: 0.8;
-    column-gap: 1.5rem;
-    row-gap: 1rem;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 2rem;
+    row-gap: 1.25rem;
   }
 }
