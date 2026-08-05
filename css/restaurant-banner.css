@@ -16,10 +16,9 @@
   color: var(--base-color-neutral--black);
 }
 
+/* Ingen egen font-size/line-height: ärver sajtens paragraf-stil */
 .restaurant-banner_heading {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.4;
   text-align: center;
 }
 
