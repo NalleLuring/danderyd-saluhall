@@ -625,12 +625,6 @@ button {
   row-gap: 28px;
 }
 
-.restaurant_menus {
-  display: flex;
-  column-gap: 28px;
-  row-gap: 12px;
-}
-
 /* ---------- Catering ---------- */
 
 .packages_item {
@@ -952,10 +946,6 @@ button {
 
   .cp-logo {
     width: 220px;
-  }
-
-  .restaurant_menus {
-    flex-direction: column;
   }
 
   .packages_item .text-muted {
