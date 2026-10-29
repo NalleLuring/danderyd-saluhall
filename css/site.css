@@ -1,0 +1,826 @@
+/* Danderyds Bageri & Saluhall – startsida v2 (Figma: Real Food Company, Frame 65)
+   Desktop följer 1440-ramen, mobil följer 390-ramen. Mellanlägen skalar proportionerligt. */
+
+:root {
+  --navy: #252e51;
+  --cream: #fffbf5;
+  --beige: #efe7da;
+  --ink: #1a1a1a;
+
+  --gutter: 64px;
+  --section-y: 96px;
+  --nav-h: 113px;
+
+  /* Färger per sektion, skrivs över av .is-beige och .is-navy */
+  --text: var(--navy);
+  --muted: rgba(37, 46, 81, 0.85);
+  --line: rgba(37, 46, 81, 0.15);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--text);
+  font-family: "Work Sans", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+dl,
+dd {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* ---------- Layout ---------- */
+
+.container {
+  width: 100%;
+  max-width: calc(1312px + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+  color: var(--text);
+}
+
+.section.has-border {
+  border-top: 1px solid var(--line);
+}
+
+.section.is-beige {
+  --text: var(--ink);
+  --muted: rgba(26, 26, 26, 0.85);
+  --line: rgba(26, 26, 26, 0.2);
+  background-color: var(--beige);
+}
+
+.section.is-navy {
+  --text: var(--cream);
+  --muted: rgba(255, 251, 245, 0.75);
+  --line: rgba(255, 251, 245, 0.2);
+  background-color: var(--navy);
+}
+
+/* Två kolumner 640 / 528 med 144 emellan vid 1312 bredd */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 640fr) minmax(0, 528fr);
+  column-gap: 10.975%;
+  align-items: start;
+}
+
+.split.is-center {
+  align-items: center;
+}
+
+.split.is-reverse {
+  grid-template-columns: minmax(0, 528fr) minmax(0, 640fr);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 20px;
+}
+
+/* ---------- Typografi ---------- */
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heading-xl {
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heading-l {
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.heading-s {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.text-small {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.text-link {
+  transition: opacity 0.2s ease;
+}
+
+.text-link:hover {
+  opacity: 0.6;
+}
+
+/* ---------- Knappar ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 10px;
+  padding: 14px 24px;
+  border: 0;
+  background-color: var(--navy);
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.button:hover {
+  opacity: 0.85;
+}
+
+.button.is-outline {
+  border: 1px solid var(--navy);
+  background-color: transparent;
+  color: var(--navy);
+}
+
+.button.is-outline:hover {
+  opacity: 1;
+  background-color: rgba(37, 46, 81, 0.06);
+}
+
+/* ---------- Logotyper som består av två delar ---------- */
+
+.brand-logo {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 94.154px;
+  aspect-ratio: 94.154 / 64;
+}
+
+.brand-logo img,
+.cp-logo img,
+.restaurant-banner_logo-cucina img {
+  position: absolute;
+  max-width: none;
+}
+
+.brand-logo_main {
+  inset: 19.39% 0 0 0;
+  width: 100%;
+  height: 80.61%;
+}
+
+.brand-logo_top {
+  top: 0;
+  left: 19.14%;
+  width: 59.67%;
+  height: 9%;
+}
+
+.cp-logo,
+.restaurant-banner_logo-cucina {
+  position: relative;
+  display: block;
+  aspect-ratio: 280 / 45.333;
+}
+
+.cp-logo {
+  width: 280px;
+}
+
+.cp-logo_a {
+  top: 0;
+  left: 0;
+  width: 49.07%;
+  height: 61.91%;
+}
+
+.cp-logo_b {
+  top: 12.91%;
+  left: 54.38%;
+  width: 45.62%;
+  height: 87.1%;
+}
+
+/* ---------- Navigering ---------- */
+
+.nav {
+  position: relative;
+  z-index: 20;
+  background-color: var(--cream);
+  border-bottom: 1px solid rgba(37, 46, 81, 0.12);
+}
+
+.nav_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 32px;
+  padding-block: 24px;
+}
+
+.nav_links {
+  display: flex;
+  align-items: center;
+  column-gap: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.nav_link {
+  transition: opacity 0.2s ease;
+}
+
+.nav_link:hover {
+  opacity: 0.6;
+}
+
+.nav_right {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.nav_menu {
+  position: relative;
+}
+
+.nav_chevron {
+  transition: transform 0.2s ease;
+}
+
+.nav_menu-button[aria-expanded="true"] .nav_chevron {
+  transform: rotate(180deg);
+}
+
+.nav_dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  padding: 6px 24px;
+  border: 1px solid rgba(37, 46, 81, 0.15);
+  background-color: var(--cream);
+}
+
+.nav_dropdown[hidden] {
+  display: none;
+}
+
+.nav_dropdown-link {
+  display: block;
+  padding-block: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: opacity 0.2s ease;
+}
+
+.nav_dropdown-link + .nav_dropdown-link {
+  border-top: 1px solid rgba(37, 46, 81, 0.15);
+}
+
+.nav_dropdown-link:hover {
+  opacity: 0.6;
+}
+
+.nav_burger {
+  position: relative;
+  display: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.nav_burger-bar {
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 1.5px;
+  background-color: var(--navy);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav_burger-bar:nth-child(1) {
+  top: 5px;
+}
+
+.nav_burger-bar:nth-child(2) {
+  top: 11px;
+}
+
+.nav_burger-bar:nth-child(3) {
+  top: 17px;
+}
+
+/* Kryss när mobilmenyn är öppen */
+.nav_burger[aria-expanded="true"] .nav_burger-bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav_burger[aria-expanded="true"] .nav_burger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav_burger[aria-expanded="true"] .nav_burger-bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ---------- Mobilmeny ---------- */
+
+.mobile-menu {
+  position: fixed;
+  top: var(--nav-h);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  padding: 24px var(--gutter) 48px;
+  background-color: var(--cream);
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+.mobile-menu_link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 18px;
+  border-bottom: 1px solid rgba(37, 46, 81, 0.15);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.mobile-menu_link span {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.mobile-menu_contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 16px;
+  padding-top: 32px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-block: 80px;
+}
+
+.hero_heading {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  max-width: 864px;
+  margin-bottom: 42px;
+}
+
+.hero_cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 32px;
+  row-gap: 40px;
+}
+
+.hero_card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.hero_card-image {
+  display: block;
+  aspect-ratio: 304 / 300;
+  overflow: hidden;
+}
+
+.hero_card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero_card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 16px;
+}
+
+.hero_card-title {
+  padding-top: 8px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.hero_card-body {
+  color: rgba(37, 46, 81, 0.8);
+}
+
+/* ---------- Rader (såser, öppettider) ---------- */
+
+.rows {
+  width: 100%;
+}
+
+.rows_row {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 24px;
+  padding-block: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.rows dd {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.rows_note {
+  color: rgba(37, 46, 81, 0.65);
+  white-space: nowrap;
+}
+
+/* ---------- Restaurang ---------- */
+
+.restaurant_image {
+  aspect-ratio: 640 / 560;
+  overflow: hidden;
+}
+
+.restaurant_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 81%;
+}
+
+.restaurant_text {
+  row-gap: 28px;
+}
+
+.restaurant_menus {
+  display: flex;
+  column-gap: 28px;
+  row-gap: 12px;
+}
+
+/* ---------- Catering ---------- */
+
+.packages_item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding-block: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.packages_item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* ---------- Fest ---------- */
+
+.party_image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 640 / 420;
+  background-color: rgba(37, 46, 81, 0.08);
+  color: rgba(37, 46, 81, 0.5);
+}
+
+/* ---------- Öppettider & kontakt ---------- */
+
+/* 528 / 448 / 336 med 144 och 32 luft till vänster om kolumn två och tre */
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 528fr) minmax(0, 448fr) minmax(0, 336fr);
+  align-items: start;
+}
+
+.contact_find {
+  padding-left: 32.14%;
+}
+
+.contact_reach {
+  padding-left: 9.52%;
+}
+
+/* ---------- Banner: Besök gärna våra andra restauranger ---------- */
+
+.restaurant-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 24px;
+  padding: 32px var(--gutter);
+  background-color: var(--cream);
+  color: #000;
+}
+
+.restaurant-banner_heading {
+  text-align: center;
+}
+
+.restaurant-banner_logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 40px;
+  row-gap: 20px;
+}
+
+.restaurant-banner_link {
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.restaurant-banner_link:hover {
+  opacity: 0.6;
+}
+
+.restaurant-banner_link img {
+  width: auto;
+}
+
+.restaurant-banner_logo-cucina {
+  width: 105px;
+}
+
+/* ---------- Surfplatta ---------- */
+
+@media screen and (max-width: 1023px) {
+  :root {
+    --gutter: 40px;
+    --section-y: 72px;
+    --nav-h: 81px;
+  }
+
+  .nav {
+    position: sticky;
+    top: 0;
+  }
+
+  .nav_inner {
+    padding-block: 16px;
+  }
+
+  .brand-logo {
+    width: 70.616px;
+  }
+
+  .nav_links,
+  .nav_menu {
+    display: none;
+  }
+
+  .nav_right {
+    column-gap: 20px;
+  }
+
+  .nav_book {
+    padding: 10px 18px;
+  }
+
+  .nav_burger {
+    display: block;
+  }
+
+  html {
+    scroll-padding-top: calc(var(--nav-h) + 8px);
+  }
+
+  .hero {
+    padding-block: 56px;
+  }
+
+  .heading-xl {
+    font-size: 44px;
+  }
+
+  .heading-l {
+    font-size: 32px;
+  }
+
+  .hero_cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 48px;
+    row-gap: 40px;
+  }
+
+  .contact > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  .contact_find,
+  .contact_reach {
+    padding-left: 0;
+  }
+}
+
+/* ---------- Mobil ---------- */
+
+@media screen and (max-width: 767px) {
+  :root {
+    --gutter: 20px;
+    --section-y: 56px;
+  }
+
+  .hero {
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+
+  .hero_heading {
+    margin-bottom: 32px;
+  }
+
+  .heading-xl {
+    font-size: 34px;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+  }
+
+  .heading-l {
+    font-size: 28px;
+  }
+
+  .hero_cards {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 24px;
+  }
+
+  .hero_card {
+    flex-direction: row;
+    column-gap: 16px;
+  }
+
+  .hero_card-image {
+    flex-shrink: 0;
+    width: 112px;
+    height: 121px;
+    aspect-ratio: auto;
+  }
+
+  .hero_card-image .is-bottom {
+    object-position: bottom;
+  }
+
+  .hero_card-text {
+    flex: 1;
+    min-width: 0;
+    row-gap: 6px;
+  }
+
+  .hero_card-title {
+    padding-top: 0;
+    font-size: 20px;
+  }
+
+  .hero_card-body {
+    line-height: 1.3;
+  }
+
+  .split,
+  .split.is-reverse {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 32px;
+  }
+
+  /* Bilden från lokalen ligger överst på mobil */
+  .split.is-reverse > .party_image {
+    order: -1;
+  }
+
+  .restaurant_image,
+  .party_image {
+    aspect-ratio: 350 / 260;
+  }
+
+  .restaurant_text {
+    row-gap: 24px;
+  }
+
+  .cp-logo {
+    width: 220px;
+  }
+
+  .restaurant_menus {
+    flex-direction: column;
+  }
+
+  .packages_item .text-muted {
+    font-size: 14px;
+  }
+
+  .contact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .restaurant-banner {
+    padding-block: 40px;
+  }
+
+  .restaurant-banner_logos {
+    column-gap: 28px;
+  }
+}
