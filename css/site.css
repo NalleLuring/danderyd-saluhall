@@ -709,10 +709,6 @@ button {
   opacity: 0.6;
 }
 
-.restaurant-banner_link img {
-  width: auto;
-}
-
 .restaurant-banner_logo-cucina {
   width: 105px;
 }
@@ -782,6 +778,18 @@ button {
 .js [data-reveal].is-visible img,
 .js [data-reveal="lines"].is-visible > *::before {
   transform: none;
+}
+
+/* Utskrift: allt ska synas även om man inte har scrollat dit */
+@media print {
+  .js [data-reveal],
+  .js [data-reveal] img,
+  .js [data-reveal="lines"] > *,
+  .js [data-reveal="lines"] > *::before {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ---------- Surfplatta ---------- */

@@ -12,15 +12,21 @@
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  <!-- Döljer innehåll som tonas in först när vi vet att JS körs -->
-  <script>document.documentElement.classList.add('js');</script>
+  <!-- Döljer innehåll som tonas in först när vi vet att JS körs. Om site.js inte
+       har startat intoningarna inom 3 sekunder visas allt direkt i stället. -->
+  <script>
+    document.documentElement.classList.add('js');
+    setTimeout(function () {
+      if (!document.documentElement.classList.contains('reveal-ready')) document.documentElement.classList.remove('js');
+    }, 3000);
+  </script>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
-  <link href="css/site.css?v=2" rel="stylesheet">
+  <link href="css/site.css?v=3" rel="stylesheet">
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
-  <script src="js/site.js?v=2" defer></script>
+  <script src="js/site.js?v=3" defer></script>
 </head>
 <body>
   <header class="nav">
@@ -75,7 +81,8 @@
     </div>
   </header>
 
-  <main id="top">
+  <!-- "#top" utan element med det id:t går till sidans topp -->
+  <main>
     <section class="hero">
       <div class="container">
         <div class="hero_heading">
@@ -120,7 +127,7 @@
 
           <article class="hero_card" data-reveal="card">
             <picture class="hero_card-image">
-              <img src="images/v2/catering.webp" alt="Uppdukad catering med meze och sallader">
+              <img src="images/v2/catering.webp" alt="Tre skålar med hemmagjord pasta">
             </picture>
             <div class="hero_card-text">
               <h2 class="hero_card-title">Catering</h2>
@@ -157,7 +164,7 @@
     <section class="section is-beige" id="restaurang">
       <div class="container split is-center">
         <div class="restaurant_image" data-reveal="image">
-          <img src="images/v2/cucina-povera-restaurang.webp" alt="Pasta serveras på Cucina Povera" loading="lazy">
+          <img src="images/v2/cucina-povera-restaurang.webp" alt="Pasta med räkor på Cucina Povera" loading="lazy">
         </div>
 
         <div class="stack restaurant_text">
