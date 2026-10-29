@@ -12,13 +12,15 @@
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
+  <!-- Döljer innehåll som tonas in först när vi vet att JS körs -->
+  <script>document.documentElement.classList.add('js');</script>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
-  <link href="css/site.css?v=1" rel="stylesheet">
+  <link href="css/site.css?v=2" rel="stylesheet">
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
-  <script src="js/site.js?v=1" defer></script>
+  <script src="js/site.js?v=2" defer></script>
 </head>
 <body>
   <header class="nav">
@@ -67,8 +69,8 @@
         <a href="documents/middagsmeny.pdf" target="_blank" rel="noopener" class="mobile-menu_link">Middagsmeny <span aria-hidden="true">→</span></a>
       </nav>
       <div class="mobile-menu_contact">
-        <a href="mailto:hello@danderydssaluhall.se">hello@danderydssaluhall.se</a>
-        <a href="tel:+46704782474">070-478 24 74</a>
+        <a href="mailto:hello@danderydssaluhall.se" class="text-link">hello@danderydssaluhall.se</a>
+        <a href="tel:+46704782474" class="text-link">070-478 24 74</a>
       </div>
     </div>
   </header>
@@ -77,12 +79,12 @@
     <section class="hero">
       <div class="container">
         <div class="hero_heading">
-          <p class="eyebrow">Sunnanängsvägen 1A · Danderyd</p>
-          <h1 class="heading-xl">Bageri, saluhall och restaurang – under samma tak.</h1>
+          <p class="eyebrow" data-reveal="up">Sunnanängsvägen 1A · Danderyd</p>
+          <h1 class="heading-xl" data-reveal="up">Bageri, saluhall och restaurang – under samma tak.</h1>
         </div>
 
         <div class="hero_cards">
-          <article class="hero_card">
+          <article class="hero_card" data-reveal="card">
             <picture class="hero_card-image">
               <source media="(max-width: 767px)" srcset="images/v2/bageri-mobil.webp">
               <img src="images/v2/bageri.webp" alt="Nybakade surdegsbröd på en plåt" class="is-bottom">
@@ -94,7 +96,7 @@
             </div>
           </article>
 
-          <article class="hero_card">
+          <article class="hero_card" data-reveal="card">
             <picture class="hero_card-image">
               <img src="images/v2/saluhall.webp" alt="Ostar och delikatesser i saluhallen">
             </picture>
@@ -105,7 +107,7 @@
             </div>
           </article>
 
-          <article class="hero_card">
+          <article class="hero_card" data-reveal="card">
             <picture class="hero_card-image">
               <img src="images/v2/restaurang.webp" alt="Pizza och förrätter på Cucina Povera">
             </picture>
@@ -116,14 +118,14 @@
             </div>
           </article>
 
-          <article class="hero_card">
+          <article class="hero_card" data-reveal="card">
             <picture class="hero_card-image">
               <img src="images/v2/catering.webp" alt="Uppdukad catering med meze och sallader">
             </picture>
             <div class="hero_card-text">
               <h2 class="hero_card-title">Catering</h2>
               <p class="hero_card-body">Meze, italienskt och fika – lagat från grunden samma dag.</p>
-              <a href="sms:+46704782474" class="text-small text-link">Förfrågan via SMS →</a>
+              <a href="sms:+46704782474" class="text-small link-arrow"><span class="link-arrow_text">Förfrågan via SMS</span> <span class="link-arrow_icon" aria-hidden="true">→</span></a>
             </div>
           </article>
         </div>
@@ -133,13 +135,13 @@
     <section class="section has-border" id="matkassar">
       <div class="container split">
         <div class="stack">
-          <p class="eyebrow">Matkassar</p>
-          <h2 class="heading-l">Matkasse för två – 255 kr</h2>
-          <p class="text-muted">Laga vår mat hemma. Varje kasse kommer med vår hemmagjorda pasta – välj mellan spaghetti och rigatoni. Beställ på plats eller hör av dig så fixar vi det.</p>
-          <p class="text-small">Beställ: ring eller sms:a <a href="tel:+46704782474" class="text-link">070-478 24 74</a> · <a href="mailto:hello@danderydssaluhall.se" class="text-link">hello@danderydssaluhall.se</a></p>
+          <p class="eyebrow" data-reveal="up">Matkassar</p>
+          <h2 class="heading-l" data-reveal="up">Matkasse för två – 255 kr</h2>
+          <p class="text-muted" data-reveal="up">Laga vår mat hemma. Varje kasse kommer med vår hemmagjorda pasta – välj mellan spaghetti och rigatoni. Beställ på plats eller hör av dig så fixar vi det.</p>
+          <p class="text-small" data-reveal="up">Beställ: ring eller sms:a <a href="tel:+46704782474" class="text-link">070-478 24 74</a> · <a href="mailto:hello@danderydssaluhall.se" class="text-link">hello@danderydssaluhall.se</a></p>
         </div>
 
-        <ul class="rows" aria-label="Såser">
+        <ul class="rows" aria-label="Såser" data-reveal="lines">
           <li class="rows_row">Pomodoro med burrata</li>
           <li class="rows_row">Pomodoro med stora italienska köttbullar</li>
           <li class="rows_row">Pepprig gräddsås med champinjoner och marinerad, grillad kyckling</li>
@@ -154,18 +156,18 @@
 
     <section class="section is-beige" id="restaurang">
       <div class="container split is-center">
-        <div class="restaurant_image">
+        <div class="restaurant_image" data-reveal="image">
           <img src="images/v2/cucina-povera-restaurang.webp" alt="Pasta serveras på Cucina Povera" loading="lazy">
         </div>
 
         <div class="stack restaurant_text">
-          <p class="eyebrow">Restaurang i saluhallen</p>
-          <div class="cp-logo" role="img" aria-label="Cucina Povera">
+          <p class="eyebrow" data-reveal="up">Restaurang i saluhallen</p>
+          <div class="cp-logo" role="img" aria-label="Cucina Povera" data-reveal="up">
             <img src="images/v2/cucina-povera-logo-1.svg" alt="" class="cp-logo_a">
             <img src="images/v2/cucina-povera-logo-2.svg" alt="" class="cp-logo_b">
           </div>
-          <p class="text-muted">Nu har Cucina Povera öppnat här inne hos oss. Goda förrätter som ostar, chark och nybakat bröd, färsk egengjord pasta och vedeldad pizza. På lunchen serverar vi även egengjorda bagels och pizza al taglio.</p>
-          <dl class="rows">
+          <p class="text-muted" data-reveal="up">Nu har Cucina Povera öppnat här inne hos oss. Goda förrätter som ostar, chark och nybakat bröd, färsk egengjord pasta och vedeldad pizza. På lunchen serverar vi även egengjorda bagels och pizza al taglio.</p>
+          <dl class="rows" data-reveal="lines">
             <div class="rows_row">
               <dt>Tisdag–torsdag</dt>
               <dd>11.00–21.00</dd>
@@ -175,11 +177,11 @@
               <dd>11.00–22.00</dd>
             </div>
           </dl>
-          <div class="restaurant_menus">
-            <a href="documents/lunchmeny.pdf" target="_blank" rel="noopener" class="text-small text-link">Lunchmeny →</a>
-            <a href="documents/middagsmeny.pdf" target="_blank" rel="noopener" class="text-small text-link">Middagsmeny →</a>
+          <div class="restaurant_menus" data-reveal="up">
+            <a href="documents/lunchmeny.pdf" target="_blank" rel="noopener" class="text-small link-arrow"><span class="link-arrow_text">Lunchmeny</span> <span class="link-arrow_icon" aria-hidden="true">→</span></a>
+            <a href="documents/middagsmeny.pdf" target="_blank" rel="noopener" class="text-small link-arrow"><span class="link-arrow_text">Middagsmeny</span> <span class="link-arrow_icon" aria-hidden="true">→</span></a>
           </div>
-          <a href="https://www.cucinapovera.se" target="_blank" rel="noopener" class="text-small text-link">Till cucinapovera.se →</a>
+          <a href="https://www.cucinapovera.se" target="_blank" rel="noopener" class="text-small link-arrow" data-reveal="up"><span class="link-arrow_text">Till cucinapovera.se</span> <span class="link-arrow_icon" aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -187,13 +189,13 @@
     <section class="section" id="catering">
       <div class="container split">
         <div class="stack">
-          <p class="eyebrow">Catering</p>
-          <h2 class="heading-l">Vi lagar maten – ni bjuder.</h2>
-          <p class="text-muted">Vi har catering i många härliga konstellationer. Allt görs av oss på plats och från grunden, samma dag som ni ska ha det.</p>
-          <p>Vill ni ha mer information? Skicka gärna ett SMS till <a href="sms:+46704782474" class="text-link">070-478 24 74</a> eller kom förbi och prata med oss på plats.</p>
+          <p class="eyebrow" data-reveal="up">Catering</p>
+          <h2 class="heading-l" data-reveal="up">Vi lagar maten – ni bjuder.</h2>
+          <p class="text-muted" data-reveal="up">Vi har catering i många härliga konstellationer. Allt görs av oss på plats och från grunden, samma dag som ni ska ha det.</p>
+          <p data-reveal="up">Vill ni ha mer information? Skicka gärna ett SMS till <a href="sms:+46704782474" class="text-link">070-478 24 74</a> eller kom förbi och prata med oss på plats.</p>
         </div>
 
-        <div class="packages">
+        <div class="packages" data-reveal="lines">
           <div class="packages_item">
             <h3 class="heading-s">Meze</h3>
             <p class="text-muted">Grillad kyckling, halloumi, goda röror som hummus och fetaoströra, goda grönsaker, ris och nybakat bröd.</p>
@@ -213,14 +215,14 @@
     <section class="section has-border" id="fest">
       <div class="container split is-reverse is-center">
         <div class="stack">
-          <p class="eyebrow">Fest &amp; tillställningar</p>
-          <h2 class="heading-l">Fira hos oss</h2>
-          <p class="text-muted">Är du sugen på att anordna en fest eller annan tillställning? Förutom catering kan du även fira på plats hos oss – med god mat, härliga viner och trevlig stämning. Hör av dig om du vill veta mer!</p>
-          <p class="text-small">Ring eller sms:a <a href="tel:+46704782474" class="text-link">070-478 24 74</a> · <a href="mailto:hello@danderydssaluhall.se" class="text-link">hello@danderydssaluhall.se</a></p>
+          <p class="eyebrow" data-reveal="up">Fest &amp; tillställningar</p>
+          <h2 class="heading-l" data-reveal="up">Fira hos oss</h2>
+          <p class="text-muted" data-reveal="up">Är du sugen på att anordna en fest eller annan tillställning? Förutom catering kan du även fira på plats hos oss – med god mat, härliga viner och trevlig stämning. Hör av dig om du vill veta mer!</p>
+          <p class="text-small" data-reveal="up">Ring eller sms:a <a href="tel:+46704782474" class="text-link">070-478 24 74</a> · <a href="mailto:hello@danderydssaluhall.se" class="text-link">hello@danderydssaluhall.se</a></p>
         </div>
 
         <!-- Platshållare tills vi har en bild från lokalen -->
-        <div class="party_image">
+        <div class="party_image" data-reveal="image">
           <p class="text-small">Bild från lokalen</p>
         </div>
       </div>
@@ -229,8 +231,8 @@
     <section class="section is-navy" id="kontakt">
       <div class="container contact">
         <div class="stack">
-          <h2 class="eyebrow">Öppettider</h2>
-          <dl class="rows is-light">
+          <h2 class="eyebrow" data-reveal="up">Öppettider</h2>
+          <dl class="rows" data-reveal="lines">
             <div class="rows_row">
               <dt>Bageri</dt>
               <dd>Från 08.00</dd>
@@ -251,27 +253,27 @@
         </div>
 
         <div class="stack contact_find" id="hitta-hit">
-          <h2 class="eyebrow">Hitta hit</h2>
-          <a href="https://share.google/jYJMbPsp9qEdQGyt3" target="_blank" rel="noopener" class="text-link">Sunnanängsvägen 1A<br>182 36 Danderyd</a>
+          <h2 class="eyebrow" data-reveal="up">Hitta hit</h2>
+          <a href="https://share.google/jYJMbPsp9qEdQGyt3" target="_blank" rel="noopener" class="link-lines" data-reveal="up"><span class="text-link">Sunnanängsvägen 1A<br>182 36 Danderyd</span></a>
         </div>
 
         <div class="stack contact_reach">
-          <h2 class="eyebrow">Kontakt &amp; bokning</h2>
-          <p>
+          <h2 class="eyebrow" data-reveal="up">Kontakt &amp; bokning</h2>
+          <p data-reveal="up">
             <a href="mailto:hello@danderydssaluhall.se" class="text-link">hello@danderydssaluhall.se</a><br>
             <a href="tel:+46704782474" class="text-link">070-478 24 74</a>
           </p>
-          <p class="text-muted">Vi hinner inte alltid svara i telefon när vi står och jobbar – skicka gärna ett SMS med vad du vill ha hjälp med, så svarar vi så snabbt vi kan!</p>
+          <p class="text-muted" data-reveal="up">Vi hinner inte alltid svara i telefon när vi står och jobbar – skicka gärna ett SMS med vad du vill ha hjälp med, så svarar vi så snabbt vi kan!</p>
           <!-- TODO: rätt Instagram-konto saknas -->
-          <a href="#" class="text-small text-link">Instagram</a>
+          <a href="#" class="text-small text-link" data-reveal="up">Instagram</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="restaurant-banner">
-    <p class="restaurant-banner_heading">Besök gärna våra andra restauranger</p>
-    <div class="restaurant-banner_logos">
+    <p class="restaurant-banner_heading" data-reveal="up">Besök gärna våra andra restauranger</p>
+    <div class="restaurant-banner_logos" data-reveal="up">
       <a href="https://www.cucinapovera.se" target="_blank" rel="noopener" class="restaurant-banner_link restaurant-banner_logo-cucina" aria-label="Cucina Povera">
         <img src="images/v2/banner-cucina-povera-1.svg" alt="" class="cp-logo_a">
         <img src="images/v2/banner-cucina-povera-2.svg" alt="" class="cp-logo_b">

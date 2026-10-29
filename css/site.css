@@ -11,6 +11,9 @@
   --section-y: 96px;
   --nav-h: 113px;
 
+  /* Lugn inbromsning, ingen studs */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
   /* Färger per sektion, skrivs över av .is-beige och .is-navy */
   --text: var(--navy);
   --muted: rgba(37, 46, 81, 0.85);
@@ -31,6 +34,13 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
 }
 
@@ -182,12 +192,33 @@ button {
   letter-spacing: 0.02em;
 }
 
-.text-link {
-  transition: opacity 0.2s ease;
+/* Understrykning som dras fram från vänster */
+.text-link,
+.nav_link,
+.link-arrow_text {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 0.5s var(--ease);
 }
 
-.text-link:hover {
-  opacity: 0.6;
+.text-link:hover,
+.nav_link:hover,
+.link-arrow:hover .link-arrow_text,
+.link-lines:hover .text-link {
+  background-size: 100% 1px;
+}
+
+.link-arrow_icon {
+  display: inline-block;
+  transition: transform 0.5s var(--ease);
+}
+
+.link-arrow:hover .link-arrow_icon {
+  transform: translateX(4px);
 }
 
 /* ---------- Knappar ---------- */
@@ -206,11 +237,11 @@ button {
   letter-spacing: 0.02em;
   white-space: nowrap;
   cursor: pointer;
-  transition: opacity 0.2s ease, background-color 0.2s ease;
+  transition: background-color 0.35s var(--ease);
 }
 
 .button:hover {
-  opacity: 0.85;
+  background-color: #1b2240;
 }
 
 .button.is-outline {
@@ -219,8 +250,8 @@ button {
   color: var(--navy);
 }
 
-.button.is-outline:hover {
-  opacity: 1;
+.button.is-outline:hover,
+.button.is-outline[aria-expanded="true"] {
   background-color: rgba(37, 46, 81, 0.06);
 }
 
@@ -307,14 +338,6 @@ button {
   white-space: nowrap;
 }
 
-.nav_link {
-  transition: opacity 0.2s ease;
-}
-
-.nav_link:hover {
-  opacity: 0.6;
-}
-
 .nav_right {
   display: flex;
   align-items: center;
@@ -326,7 +349,7 @@ button {
 }
 
 .nav_chevron {
-  transition: transform 0.2s ease;
+  transition: transform 0.4s var(--ease);
 }
 
 .nav_menu-button[aria-expanded="true"] .nav_chevron {
@@ -341,6 +364,14 @@ button {
   padding: 6px 24px;
   border: 1px solid rgba(37, 46, 81, 0.15);
   background-color: var(--cream);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.4s var(--ease);
+}
+
+.nav_dropdown.is-open {
+  opacity: 1;
+  transform: none;
 }
 
 .nav_dropdown[hidden] {
@@ -353,7 +384,7 @@ button {
   font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
-  transition: opacity 0.2s ease;
+  transition: transform 0.5s var(--ease), opacity 0.3s ease;
 }
 
 .nav_dropdown-link + .nav_dropdown-link {
@@ -361,7 +392,8 @@ button {
 }
 
 .nav_dropdown-link:hover {
-  opacity: 0.6;
+  transform: translateX(4px);
+  opacity: 0.7;
 }
 
 .nav_burger {
@@ -381,7 +413,7 @@ button {
   width: 24px;
   height: 1.5px;
   background-color: var(--navy);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.45s var(--ease), opacity 0.25s ease;
 }
 
 .nav_burger-bar:nth-child(1) {
@@ -420,6 +452,12 @@ button {
   overflow-y: auto;
   padding: 24px var(--gutter) 48px;
   background-color: var(--cream);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
 }
 
 .mobile-menu[hidden] {
@@ -442,6 +480,11 @@ button {
   font-size: 18px;
   font-weight: 400;
   line-height: 1.5;
+  transition: transform 0.5s var(--ease);
+}
+
+.mobile-menu_link:hover span {
+  transform: translateX(4px);
 }
 
 .mobile-menu_contact {
@@ -450,6 +493,22 @@ button {
   align-items: flex-start;
   row-gap: 16px;
   padding-top: 32px;
+}
+
+/* Länkarna glider upp en i taget när menyn öppnas, stänger utan fördröjning */
+.mobile-menu_link,
+.mobile-menu_contact {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.5s var(--ease);
+}
+
+.mobile-menu.is-open .mobile-menu_link,
+.mobile-menu.is-open .mobile-menu_contact {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s var(--ease), transform 0.8s var(--ease);
+  transition-delay: calc(80ms + var(--i, 0) * 45ms);
 }
 
 /* ---------- Hero ---------- */
@@ -516,11 +575,26 @@ button {
 }
 
 .rows_row {
+  position: relative;
   display: flex;
   justify-content: space-between;
   column-gap: 24px;
   padding-block: 14px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid transparent;
+}
+
+/* Linjen är ett eget lager ovanpå den genomskinliga kanten så att den kan
+   ritas fram, se Intoningar */
+.rows_row::before,
+.packages_item + .packages_item::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background-color: var(--line);
+  transform-origin: left center;
 }
 
 .rows dd {
@@ -560,11 +634,12 @@ button {
 /* ---------- Catering ---------- */
 
 .packages_item {
+  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 8px;
   padding-block: 24px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid transparent;
 }
 
 .packages_item:first-child {
@@ -640,6 +715,73 @@ button {
 
 .restaurant-banner_logo-cucina {
   width: 105px;
+}
+
+/* ---------- Intoningar ----------
+   Gäller bara när JS körs (klassen .js sätts i <head>). site.js lägger till
+   .is-visible när elementet kommer in i bild och sätter --reveal-delay så
+   att syskon kommer en i taget. */
+
+.hero_cards {
+  --reveal-base: 220ms;
+}
+
+/* Högerkolumnen kommer strax efter vänsterkolumnen */
+.split > [data-reveal="lines"],
+.split.is-reverse > [data-reveal="image"],
+.contact_find {
+  --reveal-base: 140ms;
+}
+
+.contact_reach {
+  --reveal-base: 280ms;
+}
+
+/* Text och block: tonas in och glider upp en liten bit */
+.js [data-reveal="up"],
+.js [data-reveal="card"] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1s var(--ease), transform 1.2s var(--ease);
+  transition-delay: calc(var(--reveal-base, 0ms) + var(--reveal-delay, 0ms));
+}
+
+/* Bilder: tonas in och sätter sig från en lätt inzoomning */
+.js [data-reveal="image"] {
+  opacity: 0;
+  transition: opacity 1.2s var(--ease);
+  transition-delay: calc(var(--reveal-base, 0ms) + var(--reveal-delay, 0ms));
+}
+
+.js [data-reveal="image"] img,
+.js [data-reveal="card"] img {
+  transform: scale(1.06);
+  transition: transform 1.8s var(--ease);
+  transition-delay: calc(var(--reveal-base, 0ms) + var(--reveal-delay, 0ms));
+}
+
+/* Rader: texten tonas in och linjen ritas fram från vänster, rad för rad */
+.js [data-reveal="lines"] > * {
+  opacity: 0;
+  transition: opacity 0.9s var(--ease);
+  transition-delay: calc(var(--reveal-base, 0ms) + var(--row-delay, 0ms) + 120ms);
+}
+
+.js [data-reveal="lines"] > *::before {
+  transform: scaleX(0);
+  transition: transform 1.3s var(--ease);
+  transition-delay: calc(var(--reveal-base, 0ms) + var(--row-delay, 0ms));
+}
+
+.js [data-reveal].is-visible,
+.js [data-reveal="lines"].is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+.js [data-reveal].is-visible img,
+.js [data-reveal="lines"].is-visible > *::before {
+  transform: none;
 }
 
 /* ---------- Surfplatta ---------- */
