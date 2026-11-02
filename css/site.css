@@ -51,7 +51,7 @@ body {
   font-family: "Work Sans", system-ui, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -653,6 +653,21 @@ button {
 }
 
 /* ---------- Öppettider & kontakt ---------- */
+
+.hours {
+  width: 100%;
+}
+
+.hours_heading {
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.hours_heading:not(:first-child) {
+  padding-top: 32px;
+}
 
 /* 528 / 448 / 336 med 144 och 32 luft till vänster om kolumn två och tre */
 .contact {
