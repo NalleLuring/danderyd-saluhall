@@ -4,6 +4,14 @@
   var root = document.documentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Videoloopar står still för den som valt mindre rörelse
+  if (reduceMotion) {
+    document.querySelectorAll('video[autoplay]').forEach(function (video) {
+      video.removeAttribute('autoplay');
+      video.pause();
+    });
+  }
+
   // ---------- Intoningar ----------
   // Ligger först så att ett fel längre ner aldrig kan lämna innehåll osynligt
 
